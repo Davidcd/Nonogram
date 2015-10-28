@@ -4,9 +4,6 @@ table {
 td {
 	border: black solid 1px;
 	min-width: 20px;
-	min-height: 20px;
-
-	width: 20px;
 	height: 20px;
 }
 .on {
