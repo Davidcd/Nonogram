@@ -5,6 +5,7 @@ td {
 	border: black solid 1px;
 	min-width: 20px;
 	height: 20px;
+	text-align: center;
 }
 .on {
 	background-color: #000000;

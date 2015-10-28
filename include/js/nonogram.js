@@ -51,11 +51,13 @@ function generateLabels(rows) {
 	var label;
 	var labelCount;
 
+	//Generate row labels
 	for(i = 0; i < rows.length; i++) {
+		var cell;
 		label = "";
 		labelCount = 0;
 		for(n = 0; n < rows[i].length; n++){
-			var cell = "#c_" + i + "_" + n;
+			cell = "#c_" + i + "_" + n;
 			if(rows[i][n] == true)
 				labelCount++;
 			else if(labelCount > 0){
@@ -69,4 +71,27 @@ function generateLabels(rows) {
 			
 		$(cell).parent().prepend("<td>" + label + "</td>");
 	}
+
+	//Generate column labels
+	var firstRow = $("<tr><td></td></tr>");
+	for(n = 0; n < rows[0].length; n++) {
+		label = "";
+		labelCount = 0;
+
+		for(i = 0; i < rows.length; i++) {
+			if(rows[i][n] == true)
+				labelCount++;
+			else if (labelCount > 0) {
+				label += labelCount;
+				label += "<br>";
+				labelCount = 0;
+			}
+		}
+		if(labelCount > 0)
+			label += labelCount;
+
+		firstRow.append("<td>" + label + "</td>");
+	}
+
+	$("#gameBoard").prepend(firstRow);
 }
