@@ -5,7 +5,7 @@ function makeGameBoard(boardSize) {
 		var line = "";
 		for(j = 0; j < boardSize; j++) {
 			if(j == 0) line += "<tr>";			
-			line += ("<td id=c_" + i + "_" + j + "></td>");
+			line += ("<td id=c_" + i + "_" + j + " onclick='flipBox(this)'></td>");
 		}
 		line += "</tr>";
 		$("#gameBoard").append(line);
@@ -94,4 +94,15 @@ function generateLabels(rows) {
 	}
 
 	$("#gameBoard").prepend(firstRow);
+}
+
+function flipBox(caller) {
+	console.log("flipBox called");
+	var cell = $(caller);
+	if(cell.children().length > 0) {
+		cell.empty();
+	}
+	else {
+		cell.append('<div class="on"/>');
+	}
 }
