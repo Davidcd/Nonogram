@@ -1,3 +1,6 @@
+var answerSheet;
+var size;
+
 function makeGameBoard(boardSize) {	
 	
 	//i is the number of the row, j is the number of the cell
@@ -10,8 +13,9 @@ function makeGameBoard(boardSize) {
 		line += "</tr>";
 		$("#gameBoard").append(line);
 	}
-	var answerSheet = createRows(boardSize,boardSize);
-	populateRows(answerSheet);
+	size = boardSize;
+	answerSheet = createRows(boardSize,boardSize);
+	//populateRows(answerSheet);
 	generateLabels(answerSheet);
 }
 
@@ -97,7 +101,6 @@ function generateLabels(rows) {
 }
 
 function flipBox(caller) {
-	console.log("flipBox called");
 	var cell = $(caller);
 	if(cell.children().length > 0) {
 		cell.empty();
@@ -105,4 +108,29 @@ function flipBox(caller) {
 	else {
 		cell.append('<div class="on"/>');
 	}
+}
+
+function solve() {
+	var rows = [];
+	for(i = 0; i < size; i++) {
+		rows.push(new Array());
+		for(n = 0; n < size; n++){
+			var cell = "#c_" + i + "_" + n;
+			if($(cell).children().length > 0) {
+				rows[i].push(true);
+			}
+			else{
+				rows[i].push(false);
+			}
+		}
+	}
+	var solved = true;
+	for(i = 0; i < rows.length; i++) {
+		for(n = 0; n < rows[i].length; n++) {
+			if(rows[i][n] != answerSheet[i][n])
+				solved = false;
+		}
+	}
+	if(solved) window.alert("You did it!");
+	else window.alert("Nope, keep trying");
 }
