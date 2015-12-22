@@ -1,14 +1,20 @@
 table {
 	border-collapse: collapse;
+	margin-left:auto;
+	margin-right: auto;
 }
 td {
-	border: black solid 1px;
-	min-width: 20px;
-	height: 20px;
+	border: black solid .1em;
+	min-width: 1em;
+	height: 1em;
 	text-align: center;
 }
 .on {
 	background-color: #000000;
-	height: 20px;
-    width: 20px;
+	height: 1em;
+    width: 1em;
+}
+.solveButtonWrapper {
+	margin-top: 1em;
+	text-align: center;
 }
