@@ -63,15 +63,17 @@ function checkEmpty(answerSheet) {
 		}
 	}
 	//Check for empty columns
-	for(n = 0; n < answerSheet.length; n++) {
+	for(n = 0; n < answerSheet[0].length; n++) { //step through each column
 		numOn = 0;
-		for(i = 0; i < answerSheet[n].length; i++) {
-			if(answerSheet[n][i]) 
+		for(i = 0; i < answerSheet.length; i++) {
+			if(answerSheet[i][n])
 				numOn++;
 		}
 		if(numOn < 1) {
+			//console.log("Found empty column: " + n);
 			chosenOne = getRandomInt(0, answerSheet.length - 1);
-			answerSheet[n][chosenOne] = true;
+			answerSheet[chosenOne][n] = true;
+			//console.log("Made " + chosenOne + " cell true");
 		}
 	}
 
